@@ -2,7 +2,7 @@ import os
 
 from playwright.sync_api import Playwright, sync_playwright, expect
 
-import utils.secret_config
+# import utils.secret_config
 from pages.login_page_elements import LoginPage
 import pytest
 
