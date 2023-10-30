@@ -1,3 +1,5 @@
+import os
+
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 import utils.secret_config
@@ -10,7 +12,7 @@ import pytest
 #                                              pytest.param("standard_use", "secret_sauce", marks=pytest.mark.xfail)])
 @pytest.mark.parametrize("username", ["standard_user",
                                              pytest.param("fake_user", marks=pytest.mark.xfail)])
-@pytest.mark.parametrize("password", [utils.secret_config.PASSWORD,
+@pytest.mark.parametrize("password", [os.environ['PASSWORD'],
                                              pytest.param("fake_password", marks=pytest.mark.xfail)])
 @pytest.mark.regression
 def test_login_with_different_users_and_passwords(set_up, username, password) -> None:
