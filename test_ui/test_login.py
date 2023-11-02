@@ -7,12 +7,19 @@ from pages.login_page_elements import LoginPage
 import pytest
 
 
+try:
+    PASSWORD = os.environ['PASSWORD']
+except KeyError:
+    import utils.secret_config
+    PASSWORD = utils.secret_config.PASSWORD
+
+
 # @pytest.mark.parametrize("username, password", [("standard_user",  "secret_sauce"),
 #                                              pytest.param("fakeemail", "fakepassword", marks=pytest.mark.xfail),
 #                                              pytest.param("standard_use", "secret_sauce", marks=pytest.mark.xfail)])
 @pytest.mark.parametrize("username", ["standard_user",
                                              pytest.param("fake_user", marks=pytest.mark.xfail)])
-@pytest.mark.parametrize("password", [os.environ['PASSWORD'],
+@pytest.mark.parametrize("password", [PASSWORD,
                                              pytest.param("fake_password", marks=pytest.mark.xfail)])
 @pytest.mark.regression
 def test_login_with_different_users_and_passwords(set_up, username, password) -> None:
