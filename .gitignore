@@ -2,3 +2,4 @@
 /shelf/
 /workspace.xml
 /utils/secret_config.py
+*.env

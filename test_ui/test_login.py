@@ -6,12 +6,7 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 from pages.login_page_elements import LoginPage
 import pytest
 
-
-try:
-    PASSWORD = os.environ['PASSWORD']
-except KeyError:
-    import utils.secret_config
-    PASSWORD = utils.secret_config.PASSWORD
+PASSWORD = os.environ['PASSWORD']
 
 
 # @pytest.mark.parametrize("username, password", [("standard_user",  "secret_sauce"),
